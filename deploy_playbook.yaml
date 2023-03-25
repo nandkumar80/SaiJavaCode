@@ -3,4 +3,4 @@
   become: yes
   tasks:
     - name: deploying war file into tomcat of anisble nodes
-      copy: src=./webapp.war dest=/opt/tomcat/webapps
+      copy: src=./webapp/target/webapp.war dest=/opt/tomcat/webapps
