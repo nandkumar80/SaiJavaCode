@@ -13,8 +13,7 @@ pipeline {
           } 
           stage(" execute Ansible") {
            steps {
-              ansiblePlaybook credentialsId: 'dev', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/home/dev/data/saiproject/ansible/deploy_playbook.yaml'
-            }
+              ansiblePlaybook credentialsId: 'dev', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'deploy_playbook.yaml'            }
 	    }
 	} 
 	}
