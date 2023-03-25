@@ -13,7 +13,7 @@ pipeline {
           } 
           stage(" execute Ansible") {
            steps {
-                ansiblePlaybook credentialsId: 'dev', installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/home/dev/data/saiproject/ansible/deploy_playbook.yaml'
+                ansiblePlaybook credentialsId: 'dev', installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'dev@192.168.0.105:/home/dev/data/saiproject/ansible/deploy_playbook.yaml''
             }    
         }    		 
 		 
