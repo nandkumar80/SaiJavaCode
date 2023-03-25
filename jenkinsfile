@@ -1,1 +1,21 @@
 
+pipeline {
+    agent any
+    tools {
+        maven "M2_HOME"
+      }
+    stages {
+        stage('Build Package'){
+            steps{
+                   checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: '25b2c6b9-167b-4411-8eab-ba222b3dcb8d', url: 'https://github.com/nandkumar80/SaiJavaCode.git']])
+				   sh 'mvn clean package'
+           }
+          } 
+          stage(" execute Ansible") {
+           steps {
+                ansiblePlaybook credentialsId: 'dev', installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/home/dev/data/saiproject/ansible/deploy_playbook.yaml'
+            }    
+        }    		 
+		 
+     }
+	} 
